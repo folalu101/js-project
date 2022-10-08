@@ -96,6 +96,54 @@ function boldText(word, text){
     return htmlString + "</p>";
 }
 
+// offensive words
+let notWord = ["zoinks", "muppeteer", "biffaroni", "loopdaloop"];
+function offensiveWords(word){
+    let badWord = word.split(" ");
+    nonOffensive = [];
+    badWord.forEach(function(element){
+        if(notWord.includes(element)){
+            nonOffensive.push("this word is not good");
+            } else {
+                nonOffensive.push(element);
+            }
+        });
+    }
+    let finalWord = nonOffensive.join(" ");
+    return finalWord;
+
+
+// most common word
+function topThreeWords(text) {
+    // if (errorCheck(text)) {
+    //   return 0;
+    // }
+    // let text = filterSentence(text);
+    let textArray = text.split(" ");
+    let topmost = 0;
+    let topmostWord = "";
+    let secondMost = 0;
+    let secondWord = "";
+    let thirdMost = 0;
+    let thirdWord = "";
+    let result = "";
+    textArray.forEach(function (element) {
+      let numberOfTimes = numberOfOccurencesInText(element, text);
+      if (numberOfTimes > topmost) {
+        topmost = numberOfTimes;
+        topmostWord = element;
+      } else if (numberOfTimes > secondMost) {
+        secondMost = numberOfTimes;
+        secondWord = element;
+      } else if (numberOfTimes > thirdMost) {
+        thirdMost = numberOfTimes;
+        thirdWord = element;
+      }
+      result = topmostWord + " " + topmost + "<br>" + secondWord + " " + secondMost + "<br>" + thirdWord + " " + thirdMost;
+    });
+    return result;
+  }
+
 // UI Logic
 $(document).ready(function(){
     $("#word-count").submit(function(event){
@@ -104,20 +152,24 @@ $(document).ready(function(){
         const word = $("#word").val();
         const wordCount = wordCounter(text);
         const occurencesOfWord = numberOfOccurencesInText(word, text);
+        const nonOffensive = offensiveWords(text);
+        const list = topThreeWords(text);
         $("#total-count").append(wordCount);
         $("#selected-word").append(occurencesOfWord);
         $("#bolded-text").append(boldText(word, text));
+        $("#most").append(list);
+        $("#offensive-word").append(offensiveWords(text));
 
         // Mostly used words
-        let mostly = [];
-        let mostUsed = text.split(" ");
-        mostUsed.forEach(function(element){
-            mostly.push(element);
-        });
-        mostly.forEach(function(element, index){
-            let str = "<li>";
-            $("#most").text( str + element + " " + most[index]);
-        });
+        // let most = [];
+        // let mostUsed = text.split(" ");
+        // mostUsed.forEach(function(element){
+        //     most.push(element);
+        // });
+        // most.forEach(function(element){
+        //     let str = "<li>";
+        //     $("#most").html( str + element + "" + most);
+        // });
 
     });
 });

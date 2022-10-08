@@ -1,4 +1,4 @@
-# wordCounter()
+# TEXT ANALIZER 
 
 Test: "It should count total number of word in the passage."
 Code:
