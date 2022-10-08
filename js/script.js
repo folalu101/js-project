@@ -97,3 +97,27 @@ function boldText(word, text){
 }
 
 // UI Logic
+$(document).ready(function(){
+    $("#word-count").submit(function(event){
+        event.preventDefault();
+        const text = $("#text-sentence").val();
+        const word = $("#word").val();
+        const wordCount = wordCounter(text);
+        const occurencesOfWord = numberOfOccurencesInText(word, text);
+        $("#total-count").html(wordCount);
+        $("#selected-word").html(occurencesOfWord);
+        $("#bolded-text").html(boldText(word, text));
+
+        // Mostly used words
+        let mostly = [];
+        let mostUsed = text.split(" ");
+        mostUsed.forEach(function(element){
+            mostly.push(element);
+        });
+        mostly.forEach(function(element, index){
+            let str = "<li>";
+            $("#mostly").append(str + element + "" + Mostly[index]);
+        });
+
+    });
+});
