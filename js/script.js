@@ -84,7 +84,7 @@ function boldText(word, text){
     let htmlString = "<p>";
     let textArray = text.split(" ");
     textArray.forEach(function(element, index){
-        if(element.toLowerCase().includes(word.tolOwerCase())){
+        if(element.toLowerCase().includes(word.toLowerCase())){
             htmlString = htmlString.concat(("<b>" + word + "</b>"));
         } else {
             htmlString = htmlString.concat(element);
@@ -104,9 +104,9 @@ $(document).ready(function(){
         const word = $("#word").val();
         const wordCount = wordCounter(text);
         const occurencesOfWord = numberOfOccurencesInText(word, text);
-        $("#total-count").html(wordCount);
-        $("#selected-word").html(occurencesOfWord);
-        $("#bolded-text").html(boldText(word, text));
+        $("#total-count").append(wordCount);
+        $("#selected-word").append(occurencesOfWord);
+        $("#bolded-text").append(boldText(word, text));
 
         // Mostly used words
         let mostly = [];
@@ -116,7 +116,7 @@ $(document).ready(function(){
         });
         mostly.forEach(function(element, index){
             let str = "<li>";
-            $("#mostly").append(str + element + "" + Mostly[index]);
+            $("#most").text( str + element + " " + most[index]);
         });
 
     });
