@@ -50,5 +50,12 @@ function wordCounter(text){
 
     }
     let wordCount = 0;
+    const WordArray = text.split(" ");
+    WordArray.forEach(function(element){
+        if(!Number(element)){
+            wordCount++;
+        }
+    });
+    return wordCount;
     
 }
