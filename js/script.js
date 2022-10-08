@@ -57,5 +57,20 @@ function wordCounter(text){
         }
     });
     return wordCount;
-    
 }
+
+// number of occurence
+function numberOfOccurencesInText(word, text){
+    if(word.trim().length === 0){
+        return 0;
+    }
+    const wordArray = text.split(" ");
+    let wordCount = 0;
+    wordArray.forEach(function(element){
+        if(element.toLowerCase().includes(word.toLowerCase())){
+            wordCount++;
+        }
+    });
+    return wordCount;
+}
+    
