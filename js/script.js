@@ -144,32 +144,7 @@ function topThreeWords(text) {
     return result;
   }
 
-// UI Logic
-$(document).ready(function(){
-    $("#word-count").submit(function(event){
-        event.preventDefault();
-        const text = $("#text-sentence").val();
-        const word = $("#word").val();
-        const wordCount = wordCounter(text);
-        const occurencesOfWord = numberOfOccurencesInText(word, text);
-        const nonOffensive = offensiveWords(text);
-        const list = topThreeWords(text);
-        $("#total-count").append(wordCount);
-        $("#selected-word").append(occurencesOfWord);
-        $("#bolded-text").append(boldText(word, text));
-        $("#most").append(list);
-        $("#offensive-word").append(offensiveWords(text));
 
-        // Mostly used words
-        // let most = [];
-        // let mostUsed = text.split(" ");
-        // mostUsed.forEach(function(element){
-        //     most.push(element);
-        // });
-        // most.forEach(function(element){
-        //     let str = "<li>";
-        //     $("#most").html( str + element + "" + most);
-        // });
 
-    });
-});
+
+  
