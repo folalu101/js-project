@@ -39,6 +39,8 @@
 // }
 
 // business logic
+
+// no inputted word in the passage
 function noInputtedWord(word, text){
     ((word.trim().length === 0) || (text.trim().length === 0))
     return 0;
