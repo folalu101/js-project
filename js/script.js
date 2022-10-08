@@ -74,3 +74,24 @@ function numberOfOccurencesInText(word, text){
     return wordCount;
 }
     
+// function to bold text in sentence
+function boldText(word, text){
+    if(noInputtedWord(word, text)){
+        return "";
+    }
+    let htmlString = "<p>";
+    let textArray = text.split(" ");
+    textArray.forEach(function(element, index){
+        if(element.toLowerCase().includes(word.tolOwerCase())){
+            htmlString = htmlString.concat(("<b>" + word + "</b>"));
+        } else {
+            htmlString = htmlString.concat(element);
+        }
+        if(index !== (textArray.length -1)){
+            htmlString = htmlString.concat(" ");
+        }
+    });
+    return htmlString + "</p>";
+}
+
+// UI Logic
